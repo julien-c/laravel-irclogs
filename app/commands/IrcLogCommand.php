@@ -39,8 +39,28 @@ class IrcLogCommand extends Command {
 	 */
 	public function fire()
 	{
-		
-		
+		$connection = new Connection;
+		$connection->setServerHostname('irc.freenode.net');
+		$connection->setUsername('irclogs');
+		$connection->setHostname('irc.freenode.net');
+		$connection->setServername('irc.freenode.net');
+		$connection->setRealname('IRC Logs');
+		$connection->setNickname('irclogs');
+
+		$client = new Client;
+		$client->addConnection($connection);
+		$client->addListener(function($message, $write, $connection, $logger) {
+			// Ping Pong:
+			if ($message['command'] === 'PING') {
+				$write->ircPong('laravel-irclogs');
+			}
+			
+			// Auto-join:
+			if (isset($message['code']) && in_array($message['code'], array('RPL_ENDOFMOTD', 'ERR_NOMOTD'))) {
+				$write->ircJoin('#laravel');
+			}
+		});
+		$client->run();
 	}
 
 	/**
