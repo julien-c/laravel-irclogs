@@ -1,6 +1,10 @@
 {
+	"name": "julien-c/laravel-irclogs",
+	"description": "A logger for #laravel, built with Laravel and MongoDB",
 	"require": {
-		"laravel/framework": "4.0.*"
+		"laravel/framework": "4.0.*",
+		"julien-c/mongovel": "*",
+		"phergie/phergie-irc-client-react": "*"
 	},
 	"autoload": {
 		"classmap": [
