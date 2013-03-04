@@ -3,6 +3,8 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Phergie\Irc\Connection;
+use Phergie\Irc\Client\React\Client;
 
 class IrcLogCommand extends Command {
 
@@ -11,14 +13,14 @@ class IrcLogCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'command:name';
+	protected $name = 'irc:log';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description.';
+	protected $description = 'Log IRC channel #laravel.';
 
 	/**
 	 * Create a new command instance.
@@ -37,7 +39,8 @@ class IrcLogCommand extends Command {
 	 */
 	public function fire()
 	{
-		//
+		
+		
 	}
 
 	/**
@@ -47,9 +50,7 @@ class IrcLogCommand extends Command {
 	 */
 	protected function getArguments()
 	{
-		return array(
-			array('example', InputArgument::REQUIRED, 'An example argument.'),
-		);
+		return array();
 	}
 
 	/**
