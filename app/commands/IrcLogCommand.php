@@ -54,7 +54,8 @@ class IrcLogCommand extends Command {
 			if ($message['command'] === 'PING') {
 				$write->ircPong('laravel-irclogs');
 			}
-			
+		});
+		$client->addListener(function($message, $write, $connection, $logger) {
 			// Auto-join:
 			if (isset($message['code']) && in_array($message['code'], array('RPL_ENDOFMOTD', 'ERR_NOMOTD'))) {
 				$write->ircJoin('#laravel');
